@@ -1,1 +1,26 @@
+server:
+  port: 7777
 
+spring:
+  datasource:
+    name: dev
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: ENC(UNlTaTVGw9egZdb9uR5kRBMVA7qDJ6ty2IbkFNRrBTNtS4TnBDklQqMnURMJVtgK+U7tJa9WxmWIqJAsYGRJ3hgLH5sfNsszk6wwVEcEAJfKMOD4x+PBqAh2SqZW/LuB)
+    username: ENC(faG9fIznLomyZa/gimSgJw==)
+    password: ENC(bjpJyn6HwP81Vvx2Gq572Q==)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+jpa:
+  show-sql: true
+  properties:
+    hibernate:
+      format_sql: true
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.tengke.supermarket.mapper
+  mapper-locations: classpath:mapper/*.xml
+
+jasypt:
+  encryptor:
+    password: ${ENCRYPTOR_PASSWORD}
