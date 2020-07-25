@@ -18,7 +18,7 @@ jpa:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  type-aliases-package: com.tengke.supermarket.mapper
+  type-aliases-package: com.tengke.supermarket.model
   mapper-locations: classpath:mapper/*.xml
 
 jasypt:
