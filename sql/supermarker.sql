@@ -85,3 +85,4 @@ CREATE TABLE `admin` (
   UNIQUE KEY `user_username_uindex` (`admin_name`)
 ) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='管理员';
 
+
