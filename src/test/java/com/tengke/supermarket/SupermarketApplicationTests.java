@@ -3,7 +3,7 @@ package com.tengke.supermarket;
 import com.tengke.supermarket.dto.ResultDTO;
 import com.tengke.supermarket.mapper.AdminMapper;
 import com.tengke.supermarket.model.Admin;
-import com.tengke.supermarket.service.UserService;
+import com.tengke.supermarket.service.AdminService;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 class SupermarketApplicationTests {
 
     @Autowired
-    private UserService userService;
+    private AdminService adminService;
     @Autowired
     private AdminMapper adminMapper;
 
@@ -28,8 +28,8 @@ class SupermarketApplicationTests {
         Admin admin = new Admin();
         admin.setAdminName("ceshi");
         admin.setAdminPassword("123456");
-        ResultDTO resultDTO = userService.login(admin);
-        System.out.println(resultDTO.toString());
+        ResultDTO resultDTO1 = adminService.login(admin);
+        System.out.println(resultDTO1.toString());
     }
 
     @Test
@@ -42,17 +42,4 @@ class SupermarketApplicationTests {
         System.out.println(res);
     }
 
-    //
-    @Autowired
-    StringEncryptor encryptor;
-    @Test
-    public void getEncryptor() {
-        //
-       /* String url = encryptor.encrypt("jdbc:mysql://39.107.236.198:3306/supermarket?useUnicode=true&characterEncoding=UTF-8");
-        String name = encryptor.encrypt("chenxi");
-        String password = encryptor.encrypt("chenxi");
-        System.out.println(url);
-        System.out.println(name);
-        System.out.println(password);*/
-    }
 }

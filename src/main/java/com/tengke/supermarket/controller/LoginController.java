@@ -1,8 +1,8 @@
 package com.tengke.supermarket.controller;
 
 import com.tengke.supermarket.dto.ResultDTO;
-import com.tengke.supermarket.model.User;
-import com.tengke.supermarket.service.UserService;
+import com.tengke.supermarket.model.Admin;
+import com.tengke.supermarket.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @Autowired
-    private UserService userService;
+    private AdminService userService;
 
     @PostMapping("/login")
-    public ResultDTO login(@RequestBody User user) {
-        return userService.login(user);
+    public ResultDTO login(@RequestBody Admin admin) {
+        return userService.login(admin);
     }
 }

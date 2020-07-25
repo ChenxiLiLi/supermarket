@@ -80,7 +80,7 @@ CREATE TABLE `purchase_record` (
 CREATE TABLE `admin` (
   `admin_id` INT(10) NOT NULL AUTO_INCREMENT COMMENT '管理员编号',
   `admin_name` VARCHAR(20) NOT NULL COMMENT '管理员姓名',
-  `admin_password` VARCHAR(30) DEFAULT NULL COMMENT '密码',
+  `admin_password` VARCHAR(100) DEFAULT NULL COMMENT '密码',
   PRIMARY KEY (`admin_id`),
   UNIQUE KEY `user_username_uindex` (`admin_name`)
 ) ENGINE=INNODB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='管理员';
