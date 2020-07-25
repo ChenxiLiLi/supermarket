@@ -1,6 +1,6 @@
 package com.tengke.supermarket.mapper;
 
-import com.tengke.supermarket.model.User;
+import com.tengke.supermarket.model.Admin;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,18 +9,18 @@ import org.springframework.stereotype.Component;
  * @Date:Created in 17:32 2020/7/24
  */
 @Component
-public interface UserMapper {
+public interface AdminMapper {
 
     /**
      * 根据用户名查找用户
-     * @param username 用户名
-     * @return User
+     * @param name 用户名
+     * @return Admin
      */
-    User selectUserByUsername(String username);
+    Admin selectAdminByUsername(String name);
 
     /**
      * 添加新用户
-     * @param user 用户对象
+     * @param admin 用户对象
      */
-    void addUser(User user);
+    void addUser(Admin admin);
 }

@@ -1,9 +1,9 @@
 package com.tengke.supermarket;
 
 import com.tengke.supermarket.dto.ResultDTO;
-import com.tengke.supermarket.model.User;
+import com.tengke.supermarket.mapper.AdminMapper;
+import com.tengke.supermarket.model.Admin;
 import com.tengke.supermarket.service.UserService;
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,20 @@ class SupermarketApplicationTests {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private AdminMapper adminMapper;
 
     @Test
+    public void testFindAdmin() {
+        Admin ceshi = adminMapper.selectAdminByUsername("ceshi");
+        System.out.println(ceshi);
+    }
+    @Test
     void contextLoads() {
-        User user = new User();
-        user.setUsername("ceshi");
-        user.setPassword("123456");
-        ResultDTO resultDTO = userService.login(user);
+        Admin admin = new Admin();
+        admin.setAdminName("ceshi");
+        admin.setAdminPassword("123456");
+        ResultDTO resultDTO = userService.login(admin);
         System.out.println(resultDTO.toString());
     }
 
@@ -35,12 +42,12 @@ class SupermarketApplicationTests {
         System.out.println(res);
     }
 
-    //自动加载加密类
+    //
     @Autowired
     StringEncryptor encryptor;
     @Test
     public void getEncryptor() {
-        //对敏感信息进行加密
+        //
        /* String url = encryptor.encrypt("jdbc:mysql://39.107.236.198:3306/supermarket?useUnicode=true&characterEncoding=UTF-8");
         String name = encryptor.encrypt("chenxi");
         String password = encryptor.encrypt("chenxi");
