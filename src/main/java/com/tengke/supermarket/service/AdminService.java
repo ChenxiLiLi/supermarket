@@ -40,6 +40,7 @@ public class AdminService {
                 //设置token
                 LoginDTO loginDTO = new LoginDTO();
                 loginDTO.setToken(UUID.randomUUID().toString());
+                //设置username
                 loginDTO.setUsername(admin.getAdminName());
                 return ResultDTO.success("登录成功", loginDTO);
             }

@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @Autowired
-    private AdminService userService;
+    private AdminService adminService;
 
     @PostMapping("/login")
     public ResultDTO login(@RequestBody Admin admin) {
-        return userService.login(admin);
+        System.out.println(admin.toString());
+        return adminService.login(admin);
     }
 }
