@@ -1,8 +1,8 @@
 package com.tengke.supermarket.service;
 
 import com.tengke.supermarket.dto.ResultDTO;
-import com.tengke.supermarket.mapper.UserMapper;
-import com.tengke.supermarket.model.User;
+import com.tengke.supermarket.mapper.AdminMapper;
+import com.tengke.supermarket.model.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserMapper userMapper;
+    private AdminMapper adminMapper;
     /**
      * 加密编码器
      */
@@ -24,17 +24,17 @@ public class UserService {
 
     /**
      * 用户登录
-     * @param user ""
+     * @param admin ""
      * @return ""
      */
-    public ResultDTO login(User user) {
+    public ResultDTO login(Admin admin) {
         //用户名是唯一的，所以通过用户名查找，可以锁定用户
-        User dbUser = userMapper.selectUserByUsername(user.getUsername());
+        Admin dbAdmin = adminMapper.selectAdminByUsername(admin.getAdminName());
         //存在用户，进行密码验证
-        if (dbUser != null) {
-            if (bCryptPasswordEncoder.matches(user.getPassword(), dbUser.getPassword())) {
+        if (dbAdmin != null) {
+            if (bCryptPasswordEncoder.matches(admin.getAdminPassword(), dbAdmin.getAdminPassword())) {
                 //登录成功，给前端提供用户名，用来展示
-                return ResultDTO.success("登录成功", user.getUsername());
+                return ResultDTO.success("登录成功", admin.getAdminName());
             }
         }
         return ResultDTO.error("用户名或密码错误,请输入重试");
@@ -42,16 +42,16 @@ public class UserService {
 
     /**
      * 添加用户
-     * @param user "用户对象"
+     * @param admin "用户对象"
      * @return ""
      */
-    public ResultDTO addUser(User user) {
+    public ResultDTO addUser(Admin admin) {
         //用户是否存在
-        User dbUser = userMapper.selectUserByUsername(user.getUsername());
-        if (dbUser == null) {
-            String dbPassword = bCryptPasswordEncoder.encode(user.getPassword());
-            user.setPassword(dbPassword);
-            userMapper.addUser(user);
+        Admin dbAdmin = adminMapper.selectAdminByUsername(admin.getAdminName());
+        if (dbAdmin == null) {
+            String dbPassword = bCryptPasswordEncoder.encode(admin.getAdminPassword());
+            admin.setAdminPassword(dbPassword);
+            adminMapper.addUser(admin);
             return ResultDTO.success("用户添加成功");
         }
         return ResultDTO.error("用户已存在");
