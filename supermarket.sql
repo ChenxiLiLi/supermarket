@@ -1,5 +1,5 @@
--- 创建用户表
-create table user
+-- 锟斤拷锟斤拷锟矫伙拷锟斤拷
+create table admin
 (
     id int not null auto_increment,
     username varchar(20) not null,
@@ -7,9 +7,9 @@ create table user
     constraint user_pk
         primary key (id)
 )
-    comment '系统用户';
--- 用户名唯一
+    comment '系统锟矫伙拷';
+-- 锟矫伙拷锟斤拷唯一
 create unique index user_username_uindex
-    on user (username);
+    on admin (username);
 
-insert into user values (null, "ceshi", "123456");
+insert into admin values (null, "ceshi", "123456");

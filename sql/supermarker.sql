@@ -2,7 +2,7 @@ CREATE TABLE `goods` (
   `gds_id` INT(10) NOT NULL AUTO_INCREMENT 	COMMENT '商品编号',
   `gds_name` VARCHAR(20) NOT NULL 		COMMENT '商品名称',
   `brand` VARCHAR(20) DEFAULT NULL 		COMMENT '品牌',
-  `modle` VARCHAR(20) DEFAULT NULL 		COMMENT '型号',
+  `model` VARCHAR(20) DEFAULT NULL 		COMMENT '型号',
   `category` VARCHAR(20) DEFAULT NULL 		COMMENT '种类',
   `price` FLOAT NOT NULL 			COMMENT '销售单价',
   `amount` INT(10) DEFAULT NULL 		COMMENT '库存数量',
@@ -22,7 +22,7 @@ CREATE TABLE `supplier` (
 
 CREATE TABLE `staff` (
   `sf_id` INT(10) NOT NULL AUTO_INCREMENT COMMENT '员工编号',
-  `sf_yname` VARCHAR(20) NOT NULL COMMENT '员工姓名',
+  `sf_name` VARCHAR(20) NOT NULL COMMENT '员工姓名',
   `indentity` CHAR(18) NOT NULL COMMENT '身份证号',
   `sf_tel` VARCHAR(11) DEFAULT NULL COMMENT '联系方式',
   `sex` CHAR(2) DEFAULT NULL COMMENT '性别',

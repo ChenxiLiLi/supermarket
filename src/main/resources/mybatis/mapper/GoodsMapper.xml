@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tengke.supermarket.mapper.GoodsMapper">
+
+    <!--查询全部商品-->
+    <select id="selectAllGoods" resultType="Goods">
+        select * from goods;
+    </select>
+    <!--增加商品信息-->
+    <insert id="addGoods" parameterType="Goods">
+        insert into goods values (#{gdsId}, #{gdsName}, #{brand}, #{model}, #{category}, #{price}, #{amount}, #{gdsState}, #{unit});
+    </insert>
+    <!--修改商品信息-->
+    <update id="updateGoods" parameterType="Goods">
+        update goods
+         <set>
+             <if test="gdsId!=null">gds_id=#{gdsId},</if>
+             <if test="gdsName!=null">gds_name=#{gdsName},</if>
+             <if test="brand!=null">brand=#{brand},</if>
+             <if test="model!=null">model=#{model},</if>
+             <if test="category!=null">category=#{category},</if>
+             <if test="price!=null"> price=#{price},</if>
+             <if test="amount!=null"> amount=#{amount},</if>
+             <if test="gdsState!=null"> gds_status=#{gdsState},</if>
+             <if test="unit!=null"> unit=#{unit}</if>
+         </set>
+         where gds_id=#{gdsId};
+    </update>
+    <!--删除商品信息-->
+    <delete id="deleteGoods" parameterType="int">
+        delete from goods where gds_id=#{gdsId};
+    </delete>
+</mapper>
