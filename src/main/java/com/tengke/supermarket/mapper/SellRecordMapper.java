@@ -26,6 +26,13 @@ public interface SellRecordMapper {
     SellRecord selectLastRecord();
 
     /**
+     * 计算销售记录总条数
+     * @return 总条数
+     */
+    int countRecords();
+
+
+    /**
      * 增加一条销售记录
      * @param record 销售记录
      * @return 影响行数

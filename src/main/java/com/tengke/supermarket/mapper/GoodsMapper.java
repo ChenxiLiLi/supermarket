@@ -27,6 +27,12 @@ public interface GoodsMapper {
     List<Goods> selectGoodsByPage(Map<String,Integer> info);
 
     /**
+     * 查询商品信息总数
+     * @return 总数
+     */
+    int countGoods();
+
+    /**
      * 根据商品编号查找商品信息
      * @param gdsId 商品编号
      * @return 商品信息

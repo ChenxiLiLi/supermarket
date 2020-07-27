@@ -1,5 +1,6 @@
 package com.tengke.supermarket.service;
 
+import com.tengke.supermarket.dto.PageDTO;
 import com.tengke.supermarket.dto.ResultDTO;
 import com.tengke.supermarket.mapper.GoodsMapper;
 import com.tengke.supermarket.model.Goods;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
 /**
@@ -25,18 +27,16 @@ public class GoodsService {
      * @return 商品信息列表
      */
     public ResultDTO showGoodsList(int pageNo, int size) {
-        if(pageNo <= 0 || size <= 0) {
-            return ResultDTO.success("请输入合法的页码以及页面大小");
-        }
+        int totalCount = goodsMapper.countGoods();
+        PageDTO<Goods> pageDTO = new PageDTO<>(size,totalCount,pageNo);
+
         Map<String, Integer> info = new HashMap<>(2);
-        /*
-            start：数据库表记录的开始下标，从0开始。
-            对应公式：start = (pageNo-1)*size
-            比如一页4条记录，当前页码为1，则开始记录下标为(1-1)*4=0，对应记录0 1 2 3
-        */
-        info.put("start",(pageNo-1)*size);
-        info.put("size",size);
-        return ResultDTO.success("查询成功",goodsMapper.selectGoodsByPage(info));
+        info.put("start",pageDTO.getStart());
+        info.put("size",pageDTO.getPageSize());
+
+        pageDTO.setList(goodsMapper.selectGoodsByPage(info));
+
+        return ResultDTO.success("查询成功", pageDTO);
 
     }
 
