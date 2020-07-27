@@ -45,6 +45,4 @@ public interface StaffMapper {
      */
     int deleteStaff(int sfId);
 
-
-
 }
