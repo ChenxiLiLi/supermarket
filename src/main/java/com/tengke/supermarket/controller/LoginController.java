@@ -23,12 +23,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResultDTO login( Admin admin) {
-        return userService.login(admin);
-
-    @PostMapping("/login")
-    public ResultDTO login(@RequestBody Admin admin) {
-        System.out.println(admin.toString());
         return adminService.login(admin);
-    }
 
+    }
 }

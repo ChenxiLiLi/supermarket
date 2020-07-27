@@ -1,5 +1,6 @@
 package com.tengke.supermarket.service;
 
+import com.tengke.supermarket.dto.ResultDTO;
 import com.tengke.supermarket.mapper.GoodsMapper;
 import com.tengke.supermarket.mapper.SellItemMapper;
 import com.tengke.supermarket.mapper.SellRecordMapper;
@@ -50,13 +51,13 @@ public class SellService {
      * @param sfId 员工编号
      * @return 提示信息
      */
-    public String sell(SellItem[] items, int sfId) {
+    public ResultDTO sell(SellItem[] items, int sfId) {
         //不能提交空的销售项
         if(items.length == 0) {
-            return "请添加销售项";
+            return ResultDTO.success("不能提交空的销售项");
         }
         if(staffMapper.selectStaffById(sfId) == null) {
-            return "该员工不存在！";
+            return ResultDTO.error("该员工不存在!");
         }
 
         //新增当前时间点的销售记录
@@ -74,15 +75,15 @@ public class SellService {
                 //为销售项注入销售编号
                 item.setSellId(sellId);
             } else {
-                return "商品不存在或者库存不足";
+                return ResultDTO.success("商品不存在或者库存不足");
             }
         }
         //批量添加销售项的条数
         int row = sellItemMapper.addItems(items);
         if(row == items.length) {
-            return "添加" + row + "条记录成功！";
+            return ResultDTO.success("添加" + row + "条记录成功！");
         } else {
-            return "添加失败！";
+            return ResultDTO.error("添加失败!");
         }
     }
 
@@ -92,7 +93,10 @@ public class SellService {
      * @param size 页大小
      * @return 销售记录列表
      */
-    public List<SellRecord> showSellRecordList(int pageNo, int size) {
+    public ResultDTO showSellRecordList(int pageNo, int size) {
+        if(pageNo <= 0 || size <= 0) {
+            return ResultDTO.success("请输入合法的页码以及页面大小");
+        }
         Map<String,Integer> info = new HashMap<>(2);
         /*
             start：数据库表记录的开始下标，从0开始。
@@ -101,7 +105,7 @@ public class SellService {
         */
         info.put("start",(pageNo-1)*size);
         info.put("size",size);
-        return sellRecordMapper.selectRecordsByPages(info);
+        return ResultDTO.success("success",sellRecordMapper.selectRecordsByPages(info));
     }
 
     /**
@@ -109,7 +113,8 @@ public class SellService {
      * @param sellId 销售编号
      * @return 销售项列表
      */
-    public List<SellItem> showSellItem(int sellId) {
-        return sellItemMapper.selectAllItemsById(sellId);
+    public ResultDTO showSellItem(int sellId) {
+
+        return ResultDTO.success("success",sellItemMapper.selectAllItemsById(sellId));
     }
 }
