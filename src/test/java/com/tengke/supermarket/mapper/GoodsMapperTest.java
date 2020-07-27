@@ -18,7 +18,7 @@ class GoodsMapperTest {
     void selectGoodsByPage() {
         HashMap<String, Integer> info = new HashMap<>(2);
         info.put("start",0);
-        info.put("size",3);
+        info.put("size",10);
         List<Goods> goods = mapper.selectGoodsByPage(info);
         System.out.println(goods);
     }

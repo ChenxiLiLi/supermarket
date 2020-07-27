@@ -6,7 +6,7 @@ CREATE TABLE `goods` (
   `category` VARCHAR(20) DEFAULT NULL 		COMMENT '种类',
   `price` FLOAT NOT NULL 			COMMENT '销售单价',
   `amount` INT(10) DEFAULT NULL 		COMMENT '库存数量',
-  `gds_state` CHAR(1) DEFAULT NULL 		COMMENT '状态(1正常/0停产)',
+  `gds_state` CHAR(1) DEFAULT '1' 		COMMENT '状态(1正常/0停产)',
   `unit` VARCHAR(6)				COMMENT '单位',
   PRIMARY KEY (`gds_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='商品信息';
