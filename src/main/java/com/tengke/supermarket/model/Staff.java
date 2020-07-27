@@ -6,19 +6,36 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
+/**
+ * @author cgs
+ * @Description： 员工类
+ * @date 2020年7月26日20:41:43
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Staff {               // 员工信息
+public class Staff {
+    // 员工编号
+    private Integer sfId;
+
+    // 员工姓名
     @NonNull
-    private Integer sfId;          // 员工编号
+    private String sfName;
+
+    // 身份证号
     @NonNull
-    private String sfName;         // 员工姓名
-    @NonNull
-    private String indentity;      // 身份证号
-    private String sfTel;          // 联系方式
-    private String sex;            // 性别
-    private String password;       // 密码
-    private Character sfStatus;    // 状态
+    private String indentity;
+
+    // 联系方式
+    private String sfTel;
+
+    // 性别
+    private String sex;
+
+    // 密码
+    private String password;
+
+    // 状态
+    private Character sfStatus;
 
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tengke.supermarket.mapper.SellRecordMapper">
+    <!--分页查询销售记录，并且按照销售编号降序排列-->
+    <select id="selectRecordsByPages" resultType="SellRecord" parameterType="map">
+        select * from sell_record  order by sell_id desc limit #{start}, #{size};
+    </select>
+    <!--查询最后一条销售记录-->
+    <select id="selectLastRecord" resultType="SellRecord">
+        select * from sell_record order by sell_id desc limit 1;
+    </select>
+    <!--增加一条销售记录-->
+    <insert id="addSellRecord" parameterType="SellRecord">
+        insert into sell_record () values (#{sellId},#{sfId},#{sellDate});
+    </insert>
+</mapper>

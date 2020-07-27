@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tengke.supermarket.mapper.SellItemMapper">
+    <!--按销售编号查找所有销售项-->
+    <select id="selectAllItemsById" parameterType="int" resultType="SellItem">
+        select * from sell_item where sell_id = #{sellId};
+    </select>
+
+    <!--批量增加销售项-->
+    <insert id="addItems" parameterType="SellItem">
+        insert into sell_item () values
+        <foreach collection="array" item="item" separator=",">
+            (#{item.sellId},#{item.gdsId},#{item.price},#{item.amount})
+        </foreach>
+
+    </insert>
+</mapper>

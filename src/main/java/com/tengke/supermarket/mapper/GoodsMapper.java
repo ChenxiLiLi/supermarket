@@ -4,14 +4,34 @@ import com.tengke.supermarket.model.Goods;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
+/**
+ * @Author: cgs
+ * @Description： 商品操作接口
+ * @Date:Created in 17:17 2020/7/26
+ */
 @Repository
 public interface GoodsMapper {
     /**
      * 查询所有商品
-     * @return 商品列表
+     * @return 商品信息列表
      */
     List<Goods> selectAllGoods();
+
+    /**
+     * 分页查询商品信息
+     * @param info 存放起始记录下标和页面大小
+     * @return 商品信息列表
+     */
+    List<Goods> selectGoodsByPage(Map<String,Integer> info);
+
+    /**
+     * 根据商品编号查找商品信息
+     * @param gdsId 商品编号
+     * @return 商品信息
+     */
+    Goods selectGoodsById(int gdsId);
 
     /**
      * 增加商品信息

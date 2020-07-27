@@ -4,7 +4,11 @@ import com.tengke.supermarket.model.Staff;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+/**
+ * @Author: cgs
+ * @Description： 员工操作接口
+ * @Date:Created in 17:17 2020/7/26
+ */
 @Repository
 public interface StaffMapper {
     /**
@@ -12,6 +16,13 @@ public interface StaffMapper {
      * @return 员工信息列表
      */
     List<Staff> selectAllStaff();
+
+    /**
+     * 根据员工编号查找员工
+     * @param sfId 员工编号
+     * @return 员工信息
+     */
+    Staff selectStaffById(int sfId);
 
     /**
      * 增加员工信息

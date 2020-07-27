@@ -44,16 +44,16 @@ CREATE TABLE `purchase` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='进货表';
 
 
-CREATE TABLE `sell` (
+CREATE TABLE `sell_record` (
   `sell_id` INT(10) NOT NULL AUTO_INCREMENT COMMENT '销售编号',
   `sf_id` INT(10) NOT NULL COMMENT '员工编号',
   `sell_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '销售日期',
   PRIMARY KEY (`sell_id`),
   KEY `sell_and_staff` (`sf_id`),
   CONSTRAINT `sell_and_staff` FOREIGN KEY (`sf_id`) REFERENCES `staff` (`sf_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='销售表';
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='销售记录';
 
-CREATE TABLE `sell_record` (
+CREATE TABLE `sell_item` (
   `sell_id` INT(10) NOT NULL COMMENT '销售编号',
   `gds_id` INT(10) NOT NULL COMMENT '商品编号',
   `price` FLOAT DEFAULT NULL COMMENT '销售单价',
@@ -62,8 +62,8 @@ CREATE TABLE `sell_record` (
   KEY `销售商品信息关联` (`gds_id`),
   KEY `销售成交编号关联` (`sell_id`),
   CONSTRAINT `销售商品信息关联` FOREIGN KEY (`gds_id`) REFERENCES `goods` (`gds_id`),
-  CONSTRAINT `销售成交编号关联` FOREIGN KEY (`sell_id`) REFERENCES `sell` (`sell_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='销售记录';
+  CONSTRAINT `销售成交编号关联` FOREIGN KEY (`sell_id`) REFERENCES `sell_record` (`sell_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='销售项';
 
 CREATE TABLE `purchase_record` (
   `p_id` INT(10) NOT NULL COMMENT '进货编号',
