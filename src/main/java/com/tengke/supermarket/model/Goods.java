@@ -33,5 +33,4 @@ public class Goods  {
     private Character gdsState;
     //单位
     private String unit;
-
 }
