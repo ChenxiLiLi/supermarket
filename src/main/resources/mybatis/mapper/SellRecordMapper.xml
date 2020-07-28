@@ -7,6 +7,10 @@
     <select id="selectRecordsByPages" resultType="SellRecord" parameterType="map">
         select * from sell_record  order by sell_id desc limit #{start}, #{size};
     </select>
+    <!--计算销售记录总条数-->
+    <select id="countRecords" resultType="int">
+        select count(*) from sell_record;
+    </select>
     <!--查询最后一条销售记录-->
     <select id="selectLastRecord" resultType="SellRecord">
         select * from sell_record order by sell_id desc limit 1;

@@ -1,5 +1,7 @@
 package com.tengke.supermarket.service;
 
+import com.tengke.supermarket.dto.PageDTO;
+import com.tengke.supermarket.dto.ResultDTO;
 import com.tengke.supermarket.mapper.GoodsMapper;
 import com.tengke.supermarket.mapper.SellItemMapper;
 import com.tengke.supermarket.mapper.SellRecordMapper;
@@ -12,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,13 +51,13 @@ public class SellService {
      * @param sfId 员工编号
      * @return 提示信息
      */
-    public String sell(SellItem[] items, int sfId) {
+    public ResultDTO sell(SellItem[] items, int sfId) {
         //不能提交空的销售项
         if(items.length == 0) {
-            return "请添加销售项";
+            return ResultDTO.error("不能提交空的销售项");
         }
         if(staffMapper.selectStaffById(sfId) == null) {
-            return "该员工不存在！";
+            return ResultDTO.error("该员工不存在!");
         }
 
         //新增当前时间点的销售记录
@@ -74,15 +75,15 @@ public class SellService {
                 //为销售项注入销售编号
                 item.setSellId(sellId);
             } else {
-                return "商品不存在或者库存不足";
+                return ResultDTO.error("商品不存在或者库存不足");
             }
         }
         //批量添加销售项的条数
         int row = sellItemMapper.addItems(items);
         if(row == items.length) {
-            return "添加" + row + "条记录成功！";
+            return ResultDTO.success("添加" + row + "条记录成功！");
         } else {
-            return "添加失败！";
+            return ResultDTO.error("添加失败!");
         }
     }
 
@@ -92,16 +93,14 @@ public class SellService {
      * @param size 页大小
      * @return 销售记录列表
      */
-    public List<SellRecord> showSellRecordList(int pageNo, int size) {
+    public ResultDTO showSellRecordList(int pageNo, int size) {
+        int totalCount = sellRecordMapper.countRecords();
+        PageDTO<SellRecord> pageDTO = new PageDTO<>(size, totalCount, pageNo);
         Map<String,Integer> info = new HashMap<>(2);
-        /*
-            start：数据库表记录的开始下标，从0开始。
-            对应公式：start = (pageNo-1)*size
-            比如一页4条记录，当前页码为1，则开始记录下标为(1-1)*4=0，对应记录0 1 2 3
-        */
-        info.put("start",(pageNo-1)*size);
-        info.put("size",size);
-        return sellRecordMapper.selectRecordsByPages(info);
+        info.put("start",pageDTO.getStart());
+        info.put("size",pageDTO.getPageSize());
+        pageDTO.setData(sellRecordMapper.selectRecordsByPages(info));
+        return ResultDTO.success("success",pageDTO);
     }
 
     /**
@@ -109,7 +108,8 @@ public class SellService {
      * @param sellId 销售编号
      * @return 销售项列表
      */
-    public List<SellItem> showSellItem(int sellId) {
-        return sellItemMapper.selectAllItemsById(sellId);
+    public ResultDTO showSellItem(int sellId) {
+
+        return ResultDTO.success("success",sellItemMapper.selectAllItemsById(sellId));
     }
 }

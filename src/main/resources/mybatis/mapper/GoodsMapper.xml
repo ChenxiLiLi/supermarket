@@ -9,11 +9,15 @@
     </select>
     <!--分页查询商品信息-->
     <select id="selectGoodsByPage" resultType="Goods" parameterType="map">
-        select * from goods limit #{start},#{size};
+        select * from goods where gds_status != '0' limit #{start},#{size};
+    </select>
+    <!--查询记录条数-->
+    <select id="countGoods" resultType="int">
+        select count(*) from goods where gds_status != '0';
     </select>
     <!--根据商品编号查找商品信息-->
     <select id="selectGoodsById" resultType="Goods">
-        select * from goods where gds_id=#{gdsId};
+        select * from goods where gds_id=#{gdsId} and gds_status != '0';
     </select>
     <!--增加商品信息-->
     <insert id="addGoods" parameterType="Goods">

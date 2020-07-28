@@ -1,11 +1,13 @@
 package com.tengke.supermarket.controller;
 
+import com.tengke.supermarket.dto.ResultDTO;
 import com.tengke.supermarket.model.Goods;
 import com.tengke.supermarket.model.SellItem;
 import com.tengke.supermarket.model.SellRecord;
 import com.tengke.supermarket.service.GoodsService;
 import com.tengke.supermarket.service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -31,7 +33,7 @@ public class SellController {
      * @return 商品信息
      */
     @GetMapping("/goods/{pageNo}/{size}")
-    public List<Goods> showGoods(@PathVariable("pageNo") int pageNo, @PathVariable("size") int size) {
+    public ResultDTO showGoods(@PathVariable("pageNo") int pageNo, @PathVariable("size") int size) {
         return goodsService.showGoodsList(pageNo,size);
     }
 
@@ -41,19 +43,19 @@ public class SellController {
      * @return 商品信息
      */
     @GetMapping("/goods/search/{id}")
-    public Goods searchGoods(@PathVariable("id") int gdsId) {
+    public ResultDTO searchGoods(@PathVariable("id") int gdsId) {
         return goodsService.searchGoodsById(gdsId);
     }
 
     /**
      * 提交订单（销售记录）
-     * @param items 销售项集合
+     * @param sellItem 销售项集合
      * @param sfId 员工编号
      * @return 提示消息
      */
-    @PostMapping("/addOrder/{id}/{sellItem}")
-    public String addOrder(@PathVariable("sellItem") SellItem[] items, @PathVariable("id") int sfId) {
-        return sellService.sell(items, sfId);
+    @PostMapping(value = "/addOrder/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResultDTO addOrder(@RequestParam("sellItem") SellItem[] sellItem, @PathVariable("id") int sfId) {
+        return sellService.sell(sellItem, sfId);
     }
 
     /**
@@ -63,7 +65,7 @@ public class SellController {
      * @return 销售记录列表
      */
     @GetMapping("/record/{pageNo}/{size}")
-    public List<SellRecord> getSellRecords(@PathVariable("pageNo") int pageNo, @PathVariable("size") int size) {
+    public ResultDTO getSellRecords(@PathVariable("pageNo") int pageNo, @PathVariable("size") int size) {
         return sellService.showSellRecordList(pageNo, size);
     }
 
@@ -73,7 +75,7 @@ public class SellController {
      * @return 销售项列表
      */
     @GetMapping("/recordItem/{id}")
-    public List<SellItem> getRecordItem(@PathVariable("id") int sellId) {
+    public ResultDTO getRecordItem(@PathVariable("id") int sellId) {
         return sellService.showSellItem(sellId);
     }
 }

@@ -20,11 +20,17 @@ public interface GoodsMapper {
     List<Goods> selectAllGoods();
 
     /**
-     * 分页查询商品信息
+     * 分页查询商品信息,并且不显示停产商品
      * @param info 存放起始记录下标和页面大小
      * @return 商品信息列表
      */
     List<Goods> selectGoodsByPage(Map<String,Integer> info);
+
+    /**
+     * 查询商品信息总数
+     * @return 总数
+     */
+    int countGoods();
 
     /**
      * 根据商品编号查找商品信息
