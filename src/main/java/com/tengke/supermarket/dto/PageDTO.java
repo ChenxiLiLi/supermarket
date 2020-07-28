@@ -1,5 +1,6 @@
 package com.tengke.supermarket.dto;
 
+
 import lombok.Data;
 import java.util.List;
 
@@ -7,9 +8,9 @@ import java.util.List;
 /**
  * @author cgs
  */
-
 @Data
 public class PageDTO<T> {
+
     //分页查询的结果
     private List<T> data;
     //总页数
@@ -21,6 +22,11 @@ public class PageDTO<T> {
 
     private Integer pageSize;
 
+    /**
+     * @param pageSize
+     * @param totalCount
+     * @param pageNo
+     */
     public PageDTO(int pageSize, int totalCount, int pageNo) {
         recordsNum = totalCount;
         //合法性判断
@@ -39,4 +45,7 @@ public class PageDTO<T> {
         this.pageSize = pageSize;
         this.start = (pageNo-1) * pageSize;
     }
+
 }
+
+

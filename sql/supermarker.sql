@@ -6,10 +6,39 @@ CREATE TABLE `goods` (
   `category` VARCHAR(20) DEFAULT NULL 		COMMENT '种类',
   `price` FLOAT NOT NULL 			COMMENT '销售单价',
   `amount` INT(10) DEFAULT NULL 		COMMENT '库存数量',
-  `gds_state` CHAR(1) DEFAULT NULL 		COMMENT '状态(1正常/0停产)',
+  `gds_state` CHAR(1) DEFAULT '1' 		COMMENT '状态(1正常/0停产)',
   `unit` VARCHAR(6)				COMMENT '单位',
   PRIMARY KEY (`gds_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COMMENT='商品信息';
+
+//插入数据
+insert into goods(gds_name,price,amount,unit)
+values ('冰箱',1011,500,'台');
+
+insert into goods(gds_name,price,amount,unit)
+values ('电饭煲',800,300,'台');
+insert into goods(gds_name,price,amount,unit)
+values ('风扇',59,666,'台');
+insert into goods(gds_name,price,amount,unit)
+values ('空调',2000,100,'台');
+insert into goods(gds_name,price,amount,unit)
+values ('香肠',6,999,'6条/包');
+insert into goods(gds_name,price,amount,unit)
+values ('大米',100,600,'袋');
+
+INSERT INTO goods(gds_name,price,amount,unit)
+VALUES ('辣条',2,1000,'包');
+INSERT INTO goods(gds_name,price,amount,unit)
+VALUES ('薯片',10,1000,'袋');
+INSERT INTO goods(gds_name,brand,price,amount,unit)
+VALUES ('可乐','可口可乐',4,3000,'瓶');
+INSERT INTO goods(gds_name,brand,price,amount,unit)
+VALUES ('可乐','百事可乐',4,3000,'瓶');
+INSERT INTO goods(gds_name,price,amount,unit)
+VALUES ('铅笔',1,999,'支');
+INSERT INTO goods(gds_name,price,amount,unit)
+VALUES ('橡皮擦',1.5,600,'块');
+
 
 CREATE TABLE `supplier` (
   `sp_id` INT(10) NOT NULL AUTO_INCREMENT 	COMMENT '供货商编号',

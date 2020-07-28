@@ -30,7 +30,7 @@ public class Goods  {
     //库存数量
     private Integer amount;
     //状态（1正常/0停产）
-    private Character gdsState;
+    private Character gdsStatus;
     //单位
     private String unit;
 }
