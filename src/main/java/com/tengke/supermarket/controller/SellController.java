@@ -54,7 +54,7 @@ public class SellController {
      * @return 提示消息
      */
     @PostMapping(value = "/addOrder/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResultDTO addOrder(@RequestParam("sellItem") SellItem[] sellItem, @PathVariable("id") int sfId) {
+    public ResultDTO addOrder(@RequestBody SellItem[] sellItem, @PathVariable("id") int sfId) {
         return sellService.sell(sellItem, sfId);
     }
 

@@ -20,18 +20,23 @@ public class PageDTO<T> {
      */
     Integer pagesNum;
     /**
-     * 偏移量
+     * 记录总条数
      */
     private Integer recordsNum;
 
+    /**
+     * 偏移量
+     */
     private Integer start;
-
+    /**
+     * 页面大小
+     */
     private Integer pageSize;
 
     /**
-     * @param pageSize
-     * @param totalCount
-     * @param pageNo
+     * @param pageSize 页面大小
+     * @param totalCount 记录总条数
+     * @param pageNo 当前页码
      */
     public PageDTO(int pageSize, int totalCount, int pageNo) {
         recordsNum = totalCount;
