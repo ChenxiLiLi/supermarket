@@ -20,7 +20,7 @@ public interface GoodsMapper {
     List<Goods> selectAllGoods();
 
     /**
-     * 分页查询商品信息
+     * 分页查询商品信息,并且不显示停产商品
      * @param info 存放起始记录下标和页面大小
      * @return 商品信息列表
      */

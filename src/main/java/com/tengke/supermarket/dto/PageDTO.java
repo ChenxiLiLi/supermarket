@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 public class PageDTO<T> {
     //分页查询的结果
-    private List<T> list;
+    private List<T> data;
     //分页总数
     private Integer pagesNum;
     //记录总数

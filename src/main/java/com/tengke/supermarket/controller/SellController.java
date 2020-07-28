@@ -49,13 +49,13 @@ public class SellController {
 
     /**
      * 提交订单（销售记录）
-     * @param items 销售项集合
+     * @param sellItem 销售项集合
      * @param sfId 员工编号
      * @return 提示消息
      */
-    @PostMapping("/addOrder/{id}/{sellItem}")
-    public ResultDTO addOrder(@PathVariable("sellItem") SellItem[] items, @PathVariable("id") int sfId) {
-        return sellService.sell(items, sfId);
+    @PostMapping(value = "/addOrder/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResultDTO addOrder(@RequestParam("sellItem") SellItem[] sellItem, @PathVariable("id") int sfId) {
+        return sellService.sell(sellItem, sfId);
     }
 
     /**

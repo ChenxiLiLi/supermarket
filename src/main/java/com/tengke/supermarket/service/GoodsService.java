@@ -34,7 +34,7 @@ public class GoodsService {
         info.put("start",pageDTO.getStart());
         info.put("size",pageDTO.getPageSize());
 
-        pageDTO.setList(goodsMapper.selectGoodsByPage(info));
+        pageDTO.setData(goodsMapper.selectGoodsByPage(info));
 
         return ResultDTO.success("查询成功", pageDTO);
 

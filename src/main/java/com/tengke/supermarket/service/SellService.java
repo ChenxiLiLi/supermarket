@@ -54,7 +54,7 @@ public class SellService {
     public ResultDTO sell(SellItem[] items, int sfId) {
         //不能提交空的销售项
         if(items.length == 0) {
-            return ResultDTO.success("不能提交空的销售项");
+            return ResultDTO.error("不能提交空的销售项");
         }
         if(staffMapper.selectStaffById(sfId) == null) {
             return ResultDTO.error("该员工不存在!");
@@ -75,7 +75,7 @@ public class SellService {
                 //为销售项注入销售编号
                 item.setSellId(sellId);
             } else {
-                return ResultDTO.success("商品不存在或者库存不足");
+                return ResultDTO.error("商品不存在或者库存不足");
             }
         }
         //批量添加销售项的条数
@@ -99,7 +99,7 @@ public class SellService {
         Map<String,Integer> info = new HashMap<>(2);
         info.put("start",pageDTO.getStart());
         info.put("size",pageDTO.getPageSize());
-        pageDTO.setList(sellRecordMapper.selectRecordsByPages(info));
+        pageDTO.setData(sellRecordMapper.selectRecordsByPages(info));
         return ResultDTO.success("success",pageDTO);
     }
 
