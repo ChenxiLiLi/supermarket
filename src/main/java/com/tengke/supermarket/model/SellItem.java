@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
+
 /**
- * @author  cgs
+ * @author cgs
  * @Description 销售项
  * @date 2020年7月26日20:37:22
  */
@@ -13,16 +14,24 @@ import org.springframework.lang.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SellItem {
-    //销售编号
+    /**
+     * 销售编号
+     */
     private Integer sellId;
 
-    //商品编号
+    /**
+     * 商品编号
+     */
     private Integer gdsId;
 
-    //商品单价
+    /**
+     * 商品单价
+     */
     private Float price;
 
-    //商品数量
+    /**
+     * 商品数量
+     */
     private Integer amount;
 
 }

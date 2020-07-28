@@ -21,11 +21,11 @@ public class StaffService {
     private StaffMapper staffMapper;
 
     public PageDTO<StaffDTO> getAllStaffByPage(Integer page, Integer size, String search) {
-        //µÚÒ»²½: »ñÈ¡×ÜÔ±¹¤Êı£¬È»ºó»ñÈ¡·ÖÒ³µÄÌõÊı
+        //è·å–æ€»å‘˜å·¥æ•°
         int total = staffMapper.getCount();
-        //¼ÆËãÆ«ÒÆÁ¿ºÍ×ÜÒ³Êı
+        //æ ¹æ®page,size,totalè·å–åç§»é‡
         PageDTO<StaffDTO> pageDTO = new PageDTO<>(size, total, page);
-        //·â×°Ô±¹¤¶ÔÏóµ½pageDTO.data
+        //è·å–å‘˜å·¥åˆ—è¡¨ï¼Œå°è£…
         List<StaffDTO> staffList = staffMapper.getStaffsByPage(pageDTO.getStart(), pageDTO.getPageSize(), search);
         pageDTO.setData(staffList);
         return pageDTO;

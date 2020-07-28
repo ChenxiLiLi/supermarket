@@ -15,27 +15,41 @@ import org.springframework.lang.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Staff {
-    // 员工编号
+    /**
+    *  员工编号
+     */
     private Integer sfId;
 
-    // 员工姓名
+    /**
+     * 员工姓名
+     */
     @NonNull
     private String sfName;
 
-    // 身份证号
+    /**
+     * 身份证号
+     */
     @NonNull
     private String indentity;
 
-    // 联系方式
+    /**
+     * 联系方式
+     */
     private String sfTel;
 
-    // 性别
+    /**
+     * 性别
+     */
     private String sex;
 
-    // 密码
+    /**
+     * 密码
+     */
     private String password;
 
-    // 状态
+    /**
+     * 任职状态
+     */
     private Character sfStatus;
 
 }

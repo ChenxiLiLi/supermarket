@@ -19,14 +19,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SellRecord {
-    // 销售编号
+    /**
+     *  销售编号
+     */
     private Integer sellId;
 
-    // 员工编号
+    /**
+     *  员工编号
+     */
     @NonNull
     private Integer sfId;
 
-    // 销售日期
+    /**
+     * 销售日期
+      */
     @NonNull
     private Date sellDate;
 

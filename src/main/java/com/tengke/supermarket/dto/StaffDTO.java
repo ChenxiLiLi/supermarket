@@ -3,7 +3,6 @@ package com.tengke.supermarket.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.NonNull;
 
 /**
  * @Author: Mr.Chen
@@ -15,25 +14,38 @@ import org.springframework.lang.NonNull;
 @NoArgsConstructor
 public class StaffDTO {
 
-    // Ô±¹¤ĞÕÃû
+    /**
+     * å‘˜å·¥å§“å
+     */
     private String name;
 
-    // ĞÔ±ğ
+    /**
+     * å‘˜å·¥æ€§åˆ«
+     */
     private String gender;
 
-    //Éí·İÖ¤ºÅ
-    @NonNull
+    /**
+     * å‘˜å·¥èº«ä»½è¯
+     */
     private String idCard;
 
-    // µç»°ºÅÂë
+    /**
+     * å‘˜å·¥ç”µè¯å·ç 
+     */
     private String phone;
 
-    // µç×ÓÓÊÏä
+    /**
+     * ç”µå­é‚®ä»¶
+     */
     private String email;
 
-    // ÁªÏµµØÖ·
+    /**
+     * è”ç³»åœ°å€
+     */
     private String address;
 
-    // ÈÎÖ°×´Ì¬
+    /**
+     * ä»»èŒçŠ¶æ€
+     */
     private String workState;
 }
