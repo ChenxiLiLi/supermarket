@@ -100,7 +100,7 @@ public class SellService {
         info.put("start",pageDTO.getStart());
         info.put("size",pageDTO.getPageSize());
         pageDTO.setData(sellRecordMapper.selectRecordsByPages(info));
-        return ResultDTO.success("success",pageDTO);
+        return ResultDTO.success("查询成功",pageDTO);
     }
 
     /**
@@ -110,6 +110,6 @@ public class SellService {
      */
     public ResultDTO showSellItem(int sellId) {
 
-        return ResultDTO.success("success",sellItemMapper.selectAllItemsById(sellId));
+        return ResultDTO.success("查询成功",sellItemMapper.selectAllItemsById(sellId));
     }
 }
