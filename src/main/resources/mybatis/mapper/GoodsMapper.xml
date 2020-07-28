@@ -34,7 +34,7 @@
              <if test="category!=null">category=#{category},</if>
              <if test="price!=null"> price=#{price},</if>
              <if test="amount!=null"> amount=#{amount},</if>
-             <if test="gdsState!=null"> gds_status=#{gdsState},</if>
+             <if test="gdsStatus!=null"> gds_status=#{gdsStatus},</if>
              <if test="unit!=null"> unit=#{unit}</if>
          </set>
          where gds_id=#{gdsId};
