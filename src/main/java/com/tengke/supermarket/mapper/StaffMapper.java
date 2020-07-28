@@ -1,5 +1,6 @@
 package com.tengke.supermarket.mapper;
 
+import com.tengke.supermarket.dto.StaffDTO;
 import com.tengke.supermarket.model.Staff;
 import org.springframework.stereotype.Repository;
 
@@ -11,11 +12,21 @@ import java.util.List;
  */
 @Repository
 public interface StaffMapper {
+
     /**
-     * 查找所有员工信息
-     * @return 员工信息列表
+     *  获取员工总数
+     *  @return 记录数
      */
-    List<Staff> selectAllStaff();
+    int getCount();
+
+    /**
+     * 根据页码信息分页获取员工
+     * @param start 偏移量
+     * @param pageSize 查询条数
+     * @param search 查询的员工名
+     * @return 员工集合
+     */
+    List<StaffDTO> getStaffsByPage(Integer start, Integer pageSize, String search);
 
     /**
      * 根据员工编号查找员工

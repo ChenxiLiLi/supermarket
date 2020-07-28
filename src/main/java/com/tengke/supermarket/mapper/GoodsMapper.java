@@ -43,9 +43,8 @@ public interface GoodsMapper {
     /**
      * 修改商品信息
      * @param goods 要修改的商品新信息
-     * @return 行数
      */
-    int updateGoods(Goods goods);
+    void updateGoods(Goods goods);
 
     /**
      * 删除商品信息

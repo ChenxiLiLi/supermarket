@@ -3,20 +3,47 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tengke.supermarket.mapper.StaffMapper">
-
-    <!--查找所有员工信息-->
-    <select id="selectAllStaff" resultType="Staff">
-        select * from staff;
+    <resultMap id="BaseResultMap" type="com.tengke.supermarket.dto.StaffDTO">
+        <id column="s_name" property="name"/>
+        <result column="s_gender" property="gender"/>
+        <result column="s_idCard" property="idCard"/>
+        <result column="s_phone" property="phone"/>
+        <result column="s_email" property="email"/>
+        <result column="s_address" property="address"/>
+        <result column="s_workState" property="workState"/>
+    </resultMap>
+    <!--查找员工总数-->
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(1) from staff;
+    </select>
+    <!-- 根据页码查找员工信息 -->
+    <select id="getStaffsByPage" resultMap="BaseResultMap">
+        select s.sf_name as s_name,
+               s.sex as s_gender,
+               s.identity_id as s_idCard,
+               s.sf_tel as s_phone,
+               s.email as s_email,
+               s.address as s_address,
+               s.sf_status as s_workState
+        from staff s
+        <if test="search != null and search != ''">
+            and s.name regexp #{search}
+        </if>
+        <if test="start !=null and pageSize !=null">
+            limit #{start},#{pageSize}
+        </if>
     </select>
     <!--根据员工编号查找员工-->
     <select id="selectStaffById" resultType="Staff">
         select * from staff where sf_id = #{sfId};
     </select>
-    <!--增加员工信息-->
+
+    <!--&lt;!&ndash;增加员工信息&ndash;&gt;
     <insert id="addStaff" parameterType="Staff">
         insert into staff values (#{sfId}, #{sfName}, #{indentity}, #{sfTel}, #{sex}, #{password}, #{sfStatus});
     </insert>
-    <!--修改员工信息-->
+
+    &lt;!&ndash;修改员工信息&ndash;&gt;
     <update id="updateStaff" parameterType="Staff">
         update staff
         <set>
@@ -30,8 +57,9 @@
         </set>
         where sf_id=#{sfId};
     </update>
-    <!--删除员工信息-->
+
+    &lt;!&ndash;删除员工信息&ndash;&gt;
     <delete id="deleteStaff" parameterType="int">
         delete from staff where sf_id=#{sfId};
-    </delete>
+    </delete>-->
 </mapper>

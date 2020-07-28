@@ -5,11 +5,12 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: Mr.Chen
- * @Description: 自定义编码密码类
- * @Date:Created in 9:37 2020/5/11
+ * @Description:
+ * @Date:Created in 17:57 2020/7/27
  */
 @Component
 public class MyPasswordEncoder implements PasswordEncoder {
+
     @Override
     public String encode(CharSequence charSequence) {
         return charSequence.toString();

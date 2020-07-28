@@ -1,25 +1,34 @@
 package com.tengke.supermarket;
 
-import com.tengke.supermarket.dto.ResultDTO;
-import com.tengke.supermarket.mapper.AdminMapper;
-import com.tengke.supermarket.mapper.GoodsMapper;
+import com.tengke.supermarket.dto.PageDTO;
+import com.tengke.supermarket.dto.StaffDTO;
 import com.tengke.supermarket.mapper.StaffMapper;
-import com.tengke.supermarket.model.Admin;
-import com.tengke.supermarket.model.Goods;
-import com.tengke.supermarket.model.Staff;
-import com.tengke.supermarket.service.AdminService;
-import org.jasypt.encryption.StringEncryptor;
+import com.tengke.supermarket.service.StaffService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 
 @SpringBootTest
 class SupermarketApplicationTests {
-
+/*@Autowired
+    private StaffService staffService;
     @Autowired
+    private StaffMapper staffMapper;
+
+    @Test
+    public void testStaff(){
+        PageDTO<StaffDTO> list = staffService.getAllStaffByPage(2, 3, "");
+        for (StaffDTO staffDTO:
+             list.getData()) {
+            System.out.println(staffDTO.toString());
+        }
+    }*/
+
+
+
+    /*@Autowired
     private AdminService adminService;
     @Autowired
     private AdminMapper adminMapper;
@@ -94,5 +103,5 @@ class SupermarketApplicationTests {
         boolean res = bCryptPasswordEncoder.matches("admin", pass);
         System.out.println(res);
     }
-
+*/
 }
