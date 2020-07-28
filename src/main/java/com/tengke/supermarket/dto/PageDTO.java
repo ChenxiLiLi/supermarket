@@ -11,11 +11,17 @@ import java.util.List;
 @Data
 public class PageDTO<T> {
 
-    //·ÖÒ³²éÑ¯µÄ½á¹û
+    /**
+     * æ•°æ®è®°å½•é›†åˆ
+     */
     private List<T> data;
-    //×ÜÒ³Êı
+    /**
+     * æ€»é¡µç 
+     */
     Integer pagesNum;
-    //¼ÇÂ¼×ÜÊı
+    /**
+     * åç§»é‡
+     */
     private Integer recordsNum;
 
     private Integer start;
@@ -29,16 +35,15 @@ public class PageDTO<T> {
      */
     public PageDTO(int pageSize, int totalCount, int pageNo) {
         recordsNum = totalCount;
-        //ºÏ·¨ĞÔÅĞ¶Ï
+        //åˆæ³•æ€§åˆ¤æ–­
         if(pageNo <= 0) {
             pageNo = 1;
         }
         if(pageSize <= 0) {
             pageSize = 7;
         }
-        //»ñÈ¡×ÜÒ³Êı
+        //è·å–æ€»é¡µæ•°
         pagesNum = totalCount % pageSize == 0 ? totalCount  / pageSize : totalCount / pageSize + 1;
-        //ÅĞ¶Ïµ±Ç°Ò³ÂëÊÇ·ñÔÚºÏ·¨·¶Î§ÄÚ
         if(pageNo > pagesNum) {
             pageNo = pagesNum;
         }

@@ -35,7 +35,6 @@ public interface SellRecordMapper {
     /**
      * 增加一条销售记录
      * @param record 销售记录
-     * @return 影响行数
      */
-    int addSellRecord(SellRecord record);
+    void addSellRecord(SellRecord record);
 }
