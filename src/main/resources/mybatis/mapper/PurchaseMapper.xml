@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tengke.supermarket.mapper.PurchaseMapper">
+    <!--添加一条进货记录-->
+    <insert id="addPurRecord" parameterType="com.tengke.supermarket.model.PurchaseRecord">
+        insert into purchase_record(sp_id, sf_id, p_date, gds_id, p_price, p_amount)
+        values (#{supplierId}, #{staffId}, #{purchaseDate}, #{goodsId}, #{purchasePrice}, #{pAmount})
+    </insert>
+
+    <!--查询所有进货记录-->
+    <select id="selectAllPurRecord" resultType="com.tengke.supermarket.model.PurchaseRecord">
+        select *
+        from purchase_record
+        order by p_id;
+    </select>
+    <!--查询进货记录总条数-->
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(*) from purchase_record
+    </select>
+    <!-- 分页查找进货记录 -->
+    <select id="selectPurRecordByPage" resultMap="com.tengke.supermarket.model.PurchaseRecord">
+        select * from purchase_record
+        <if test="start !=null and pageSize !=null">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+    <!--根据进货编号查询销售记录-->
+    <select id="selectPurRecordById" resultType="com.tengke.supermarket.model.PurchaseRecord">
+        select *
+        from purchase_record
+        where p_id = #{purchaseId};
+    </select>
+
+</mapper>
+

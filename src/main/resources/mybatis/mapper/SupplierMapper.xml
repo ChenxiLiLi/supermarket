@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tengke.supermarket.mapper.SupplierMapper">
+
+    <!--根据供货商编号查找供货商-->
+    <select id="selectSupplierId" resultType="com.tengke.supermarket.model.Supplier">
+        select * from supplier where sp_id = #{SupplierId};
+    </select>
+</mapper>

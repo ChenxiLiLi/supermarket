@@ -29,15 +29,11 @@ public class GoodsService {
     public ResultDTO showGoodsList(int pageNo, int size) {
         int totalCount = goodsMapper.countGoods();
         PageDTO<Goods> pageDTO = new PageDTO<>(size,totalCount,pageNo);
-
         Map<String, Integer> info = new HashMap<>(2);
         info.put("start",pageDTO.getStart());
         info.put("size",pageDTO.getPageSize());
-
         pageDTO.setData(goodsMapper.selectGoodsByPage(info));
-
         return ResultDTO.success("查询成功", pageDTO);
-
     }
 
     /**
@@ -50,7 +46,6 @@ public class GoodsService {
         if(goods != null) {
             return ResultDTO.success("success",goods);
         }
-
         return ResultDTO.success("未找到该商品");
     }
 

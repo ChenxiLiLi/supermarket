@@ -1,8 +1,8 @@
 package com.tengke.supermarket.controller;
 
 import com.tengke.supermarket.dto.PageDTO;
+import com.tengke.supermarket.dto.ResultDTO;
 import com.tengke.supermarket.dto.StaffDTO;
-import com.tengke.supermarket.model.Staff;
 import com.tengke.supermarket.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +24,11 @@ public class StaffController {
     private StaffService staffService;
 
     @GetMapping("/basicInfo")
-    private PageDTO<StaffDTO> getAllEmployeeByPage(HttpServletRequest request) {
+    private ResultDTO getAllEmployeeByPage(HttpServletRequest request) {
         Integer page = Integer.parseInt(request.getParameter("page"));
         Integer size = Integer.parseInt(request.getParameter("size"));
         String search = request.getParameter("search");
-        return staffService.getAllStaffByPage(page, size, search);
+        PageDTO<StaffDTO> res = staffService.getAllStaffByPage(page, size, search);
+        return ResultDTO.success("员工信息获取成功", res);
     }
 }
