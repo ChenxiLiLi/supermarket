@@ -22,7 +22,7 @@ public class StaffService {
 
     public PageDTO<StaffDTO> getAllStaffByPage(Integer page, Integer size, String search) {
         //获取总员工数
-        int total = staffMapper.getCount();
+        int total = staffMapper.getCount(search);
         //根据page,size,total获取偏移量
         PageDTO<StaffDTO> pageDTO = new PageDTO<>(size, total, page);
         //获取员工列表，封装

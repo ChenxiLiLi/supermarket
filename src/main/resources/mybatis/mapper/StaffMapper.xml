@@ -14,7 +14,10 @@
     </resultMap>
     <!--查找员工总数-->
     <select id="getCount" resultType="java.lang.Integer">
-        select count(1) from staff;
+        select count(1) from staff s
+        <if test="search != null and search != ''">
+            where s.sf_name regexp #{search}
+        </if>
     </select>
     <!-- 根据页码查找员工信息 -->
     <select id="getStaffsByPage" resultMap="BaseResultMap">
@@ -27,7 +30,7 @@
                s.sf_status as s_workState
         from staff s
         <if test="search != null and search != ''">
-            and s.name regexp #{search}
+            where s.sf_name regexp #{search}
         </if>
         <if test="start !=null and pageSize !=null">
             limit #{start},#{pageSize}

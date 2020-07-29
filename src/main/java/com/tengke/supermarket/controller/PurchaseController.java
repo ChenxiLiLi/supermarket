@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -62,9 +63,11 @@ public class PurchaseController {
      * 分页展示进货记录
      * @return 进货记录列表，List存储
      */
-    @GetMapping("/allPurRecord/{pageNo}/{size}/{name}")
-    public PageDTO<PurchaseDTO> getPurRecordsByPage(@PathVariable("pageNo") int page, @PathVariable("size") int size, @PathVariable("name") String name) {
-        return purService.showPurRecordByPage(page, size,name);
+    @GetMapping("/allPurRecord")
+    public PageDTO<PurchaseDTO> getPurRecordsByPage(HttpServletRequest request) {
+        int page = Integer.parseInt(request.getParameter("pageNo"));
+        int size = Integer.parseInt(request.getParameter("size"));
+        return purService.showPurRecordByPage(page, size, request.getParameter("name"));
     }
 
     /**

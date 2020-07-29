@@ -45,7 +45,7 @@ public class PageDTO<T> {
             pageNo = 1;
         }
         if(pageSize <= 0) {
-            pageSize = 7;
+            pageSize = 5;
         }
         //获取总页数
         pagesNum = totalCount % pageSize == 0 ? totalCount  / pageSize : totalCount / pageSize + 1;

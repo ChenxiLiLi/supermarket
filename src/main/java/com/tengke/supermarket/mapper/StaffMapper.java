@@ -2,6 +2,7 @@ package com.tengke.supermarket.mapper;
 
 import com.tengke.supermarket.dto.StaffDTO;
 import com.tengke.supermarket.model.Staff;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface StaffMapper {
      *  获取员工总数
      *  @return 记录数
      */
-    int getCount();
+    int getCount(String search);
 
     /**
      * 根据页码信息分页获取员工
@@ -26,7 +27,7 @@ public interface StaffMapper {
      * @param search 查询的员工名
      * @return 员工集合
      */
-    List<StaffDTO> getStaffsByPage(Integer start, Integer pageSize, String search);
+    List<StaffDTO> getStaffsByPage(@Param("start") Integer start, @Param("pageSize") Integer pageSize, @Param("search") String search);
 
     /**
      * 根据员工编号查找员工
