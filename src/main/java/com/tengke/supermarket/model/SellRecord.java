@@ -1,14 +1,16 @@
 package com.tengke.supermarket.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import lombok.NoArgsConstructor;
 import org.springframework.lang.NonNull;
 
+
 import java.util.Date;
-import java.util.List;
+
 
 /**
  * @author : cgs
@@ -32,8 +34,9 @@ public class SellRecord {
 
     /**
      * 销售日期
-      */
+     */
     @NonNull
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date sellDate;
 
 

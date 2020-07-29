@@ -1,5 +1,6 @@
 package com.tengke.supermarket.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class PurchaseRecord {
     /**
      * 进货日期
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date purchaseDate;
     /**
      * 商品编号

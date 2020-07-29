@@ -19,7 +19,29 @@ public interface PurchaseMapper {
 
     List<PurchaseRecord> selectPurRecordById(int purchaseId);
 
-    int getCount();
 
-    List<PurchaseRecord> selectPurRecordByPage(Integer start, Integer pageSize);
+    /**
+     * 分页查询商品编号在list集合中的所有进货记录
+     * @param start 偏移量
+     * @param pageSize 页面大小
+     * @param list 商品编号集合
+     * @return 记录集合
+     */
+    List<PurchaseRecord> selectPurRecordByPage(Integer start, Integer pageSize, List<Integer> list);
+
+    /**
+     * 通过商品名字分页查询进货记录
+     * @param start 偏移量
+     * @param pageSize 页面大小
+     * @param name 商品名字
+     * @return
+     */
+    List<PurchaseRecord> selectPurRecordByGoodsName(Integer start, Integer pageSize, String name);
+
+    /**
+     * 查询商品编号集合的记录总条数
+     * @param list 商品编号集合
+     * @return 条数
+     */
+    int getCount(List<Integer> list);
 }

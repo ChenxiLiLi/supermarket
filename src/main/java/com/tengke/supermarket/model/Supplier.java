@@ -13,9 +13,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Supplier {
-    private Integer supplierId;
-    private String supplierName;
-    private String supLocation;
-    private String supTel;
-    private String supDecription;
+    private Integer spID;
+    private String spName;
+    private String location;
+    private String spTel;
+    private String description;
 }
