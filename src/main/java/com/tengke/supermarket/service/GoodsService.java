@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,6 +48,20 @@ public class GoodsService {
             return ResultDTO.success("success",goods);
         }
         return ResultDTO.success("未找到该商品");
+    }
+
+    /**
+     * 分页查询库存少于50的商品
+     * @param pageNo 页码
+     * @param size 页面大小
+     * @return
+     */
+    public ResultDTO showGoodsLess(int pageNo, int size) {
+        int count = goodsMapper.countGoodsLess();
+        PageDTO<Goods> pageDTO = new PageDTO<>(size, count, pageNo);
+        List<Goods> goods = goodsMapper.selectGoodsLessByPage(pageDTO.getStart(), pageDTO.getPageSize());
+        pageDTO.setData(goods);
+        return ResultDTO.success("库存少于50的商品",pageDTO);
     }
 
 }

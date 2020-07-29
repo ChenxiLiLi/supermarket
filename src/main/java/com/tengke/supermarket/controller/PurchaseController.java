@@ -3,13 +3,11 @@ package com.tengke.supermarket.controller;
 import com.tengke.supermarket.dto.PageDTO;
 import com.tengke.supermarket.dto.PurchaseDTO;
 import com.tengke.supermarket.dto.ResultDTO;
-import com.tengke.supermarket.model.Goods;
 import com.tengke.supermarket.model.PurchaseRecord;
-import com.tengke.supermarket.model.SellItem;
-import com.tengke.supermarket.model.SellRecord;
 import com.tengke.supermarket.service.GoodsService;
 import com.tengke.supermarket.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -54,8 +52,8 @@ public class PurchaseController {
      * @param purchaseRecord 一条进货记录
      * @return 提示消息
      */
-    @PostMapping("/addPurchase/{purchaseRecord}")
-    public String addPurchaseRecord(@PathVariable("purchaseRecord") PurchaseRecord purchaseRecord) {
+    @PostMapping(value = "/addPurchase", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String addPurchaseRecord(@RequestBody PurchaseRecord purchaseRecord) {
         return purService.purchase(purchaseRecord);
     }
 

@@ -37,6 +37,7 @@ public class PurchaseService {
      * @return 提示信息
      */
     public String purchase(PurchaseRecord purchaseRecord) {
+        System.out.println(purchaseRecord);
         //不能提交空的进货项
         if(purchaseRecord == null) {
             return "请添加进货记录";
@@ -51,7 +52,7 @@ public class PurchaseService {
         int res = purchaseMapper.addPurRecord (purchaseRecord);
         System.out.println(res);
         //修改商品库存信息
-        goods.setAmount(goods.getAmount()+purchaseRecord.getPAmount());
+        goods.setAmount(goods.getAmount()+purchaseRecord.getAmount());
         //更新数据库记录
         int updated = goodsMapper.updateGoods(goods);
         if (updated == 1) {
@@ -83,8 +84,8 @@ public class PurchaseService {
         for (PurchaseRecord record : allPurRecord) {
             data.add(new PurchaseDTO(record.getPurchaseId(),
                     goodsMapper.selectNameById(record.getGoodsId()),
-                    record.getPurchasePrice(),
-                    record.getPAmount(),
+                    record.getPrice(),
+                    record.getAmount(),
                     record.getPurchaseDate(),
                     supplierMapper.selectSupplierId(record.getSupplierId()).getSpName(),
                     record.getStaffId()
