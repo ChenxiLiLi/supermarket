@@ -31,6 +31,14 @@
         </if>
         ;
     </select>
+    <!--分页查询库存告急的商品信息-->
+    <select id="selectGoodsLessByPage" resultType="Goods">
+        select * from goods where amount &lt; 50 limit #{start},#{size};
+    </select>
+    <!--查询库存不足的商品记录条数-->
+    <select id="countGoodsLess" resultType="int">
+        select count(*) from goods where amount &lt; 50;
+    </select>
     <!--修改商品信息-->
     <update id="updateGoods" parameterType="Goods">
         update goods

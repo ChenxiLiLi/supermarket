@@ -9,15 +9,15 @@
         <result column="sf_id" property="staffId"/>
         <result column="p_date" property="purchaseDate"/>
         <result column="gds_id" property="goodsId"/>
-        <result column="p_price" property="purchasePrice"/>
-        <result column="p_amount" property="pAmount"/>
+        <result column="p_price" property="price"/>
+        <result column="p_amount" property="amount"/>
 
     </resultMap>
 
     <!--添加一条进货记录-->
     <insert id="addPurRecord" parameterType="com.tengke.supermarket.model.PurchaseRecord">
         insert into purchase_record(sp_id, sf_id, p_date, gds_id, p_price, p_amount)
-        values (#{supplierId}, #{staffId}, #{purchaseDate}, #{goodsId}, #{purchasePrice}, #{pAmount})
+        values (#{supplierId}, #{staffId}, #{purchaseDate}, #{goodsId}, #{price}, #{amount})
     </insert>
 
     <!--查询所有进货记录-->

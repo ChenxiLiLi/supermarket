@@ -12,7 +12,11 @@ import java.util.List;
 
 @Component
 public interface PurchaseMapper {
-
+    /**
+     * 增加一条进货记录
+     * @param purchaseRecord 进货信息
+     * @return
+     */
     int addPurRecord(PurchaseRecord purchaseRecord);
 
     List<PurchaseRecord> selectAllPurRecord();
