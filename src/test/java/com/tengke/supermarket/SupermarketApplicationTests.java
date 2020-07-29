@@ -38,12 +38,7 @@ class SupermarketApplicationTests {
         System.out.println(list.size());
     }*/
 
-    @Test
-    public void testStaff(){
-        PurchaseRecord purchaseRecord = new PurchaseRecord(1, 2, null, 1, (float) 13.5, 100);
-        String res = purchaseService.purchase(purchaseRecord);
-        System.out.println(res);
-    }
+
 
 
 }
