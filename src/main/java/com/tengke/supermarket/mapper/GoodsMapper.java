@@ -40,6 +40,13 @@ public interface GoodsMapper {
     Goods selectGoodsById(int gdsId);
 
     /**
+     * 通过商品名字查找商品编号
+     * @param name 商品名称
+     * @return 商品编号
+     */
+    List<Integer> selectIdByName(String name);
+
+    /**
      * 增加商品信息
      * @param goods 需要增加的商品信息
      * @return 行数
@@ -59,4 +66,11 @@ public interface GoodsMapper {
      * @return 行数
      */
     int deleteGoods(int gdsId);
+
+    /**
+     * 通过商品编号查找商品名字
+     * @param gdsId 商品编号
+     * @return 商品名称
+     */
+    String selectNameById(int gdsId);
 }

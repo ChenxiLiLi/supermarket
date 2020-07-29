@@ -3,6 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tengke.supermarket.mapper.PurchaseMapper">
+    <resultMap id="result" type="com.tengke.supermarket.model.PurchaseRecord">
+        <result column="p_id" property="purchaseId"/>
+        <result column="sp_id" property="supplierId"/>
+        <result column="sf_id" property="staffId"/>
+        <result column="p_date" property="purchaseDate"/>
+        <result column="gds_id" property="goodsId"/>
+        <result column="p_price" property="purchasePrice"/>
+        <result column="p_amount" property="pAmount"/>
+
+    </resultMap>
+
     <!--添加一条进货记录-->
     <insert id="addPurRecord" parameterType="com.tengke.supermarket.model.PurchaseRecord">
         insert into purchase_record(sp_id, sf_id, p_date, gds_id, p_price, p_amount)
@@ -15,13 +26,13 @@
         from purchase_record
         order by p_id;
     </select>
-    <!--查询进货记录总条数-->
-    <select id="getCount" resultType="java.lang.Integer">
-        select count(*) from purchase_record
-    </select>
+
     <!-- 分页查找进货记录 -->
-    <select id="selectPurRecordByPage" resultMap="com.tengke.supermarket.model.PurchaseRecord">
-        select * from purchase_record
+    <select id="selectPurRecordByPage" resultType="com.tengke.supermarket.model.PurchaseRecord" resultMap="result">
+        select * from purchase_record where gds_id in
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
         <if test="start !=null and pageSize !=null">
             limit #{start},#{pageSize}
         </if>
@@ -32,6 +43,17 @@
         select *
         from purchase_record
         where p_id = #{purchaseId};
+    </select>
+
+    <select id="getCount" resultType="int" parameterType="list">
+        select count(*) from purchase_record
+        <if test="list!=null">
+            where gds_id in
+            <foreach collection="list" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        ;
     </select>
 
 </mapper>

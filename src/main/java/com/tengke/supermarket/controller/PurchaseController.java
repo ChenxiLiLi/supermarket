@@ -1,6 +1,7 @@
 package com.tengke.supermarket.controller;
 
 import com.tengke.supermarket.dto.PageDTO;
+import com.tengke.supermarket.dto.PurchaseDTO;
 import com.tengke.supermarket.dto.ResultDTO;
 import com.tengke.supermarket.model.Goods;
 import com.tengke.supermarket.model.PurchaseRecord;
@@ -61,9 +62,9 @@ public class PurchaseController {
      * 分页展示进货记录
      * @return 进货记录列表，List存储
      */
-    @GetMapping("/allPurRecord/{pageNo}/{size}")
-    public PageDTO<PurchaseRecord> getPurRecordsByPage(@PathVariable("pageNo") int page, @PathVariable("size") int size) {
-        return purService.showPurRecordByPage(page, size);
+    @GetMapping("/allPurRecord/{pageNo}/{size}/{name}")
+    public PageDTO<PurchaseDTO> getPurRecordsByPage(@PathVariable("pageNo") int page, @PathVariable("size") int size, @PathVariable("name") String name) {
+        return purService.showPurRecordByPage(page, size,name);
     }
 
     /**

@@ -23,6 +23,14 @@
     <insert id="addGoods" parameterType="Goods">
         insert into goods values (#{gdsId}, #{gdsName}, #{brand}, #{model}, #{category}, #{price}, #{amount}, #{gdsState}, #{unit});
     </insert>
+    <!--通过商品名字查找商品编号-->
+    <select id="selectIdByName" parameterType="string" resultType="Integer">
+        select gds_id from goods
+        <if test="name!=null">
+            where gds_name like concat ('%',#{name},'%')
+        </if>
+        ;
+    </select>
     <!--修改商品信息-->
     <update id="updateGoods" parameterType="Goods">
         update goods
@@ -43,4 +51,8 @@
     <delete id="deleteGoods" parameterType="int">
         delete from goods where gds_id=#{gdsId};
     </delete>
+
+    <select id="selectNameById" resultType="string">
+        select gds_name from goods where gds_id = #{gdsId};
+    </select>
 </mapper>
