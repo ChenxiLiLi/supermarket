@@ -93,6 +93,15 @@ public class PageDTO<T> {
 后台根据start和pageSize就可以使用sql语句`select * from xx limit start,pageSize`进行分页查询了
 前端根据data、pagesNum、recordsNum可以显示分页的列表，总页数
 
+如何使用：
+- 在需要进行分页查询的业务中使用`pageDTO`
+- 需要的参数：页码，页面大小，总记录条数
+  - 页码和页面大小是从前端传过来的
+  - 总记录条数是xxxMapper.countNum()算出来的
+- 得到三个参数后，利用pageDTO的构造器，new PageDTO(页面大小，总记录条数，页码)，获得一个PageDTO，利用生成的pageDTO可以获得分页查询所需的参数：偏移量start=pageDTO.getStart()，和分页大小size=pageDTO.getPageSize()
+- 进行完分页查询后获得的列表，用pageDTO.setData(xxx)方法存放到PageDTO中，这样，前端就能用PageDTO获取分页的列表，总页码和总记录条数进行分页展示了
+
+
 
 
 
