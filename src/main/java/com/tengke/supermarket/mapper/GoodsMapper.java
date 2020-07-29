@@ -1,6 +1,7 @@
 package com.tengke.supermarket.mapper;
 
 import com.tengke.supermarket.model.Goods;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.Map;
  * @Description： 商品操作接口
  * @Date:Created in 17:17 2020/7/26
  */
-@Repository
+@Component
 public interface GoodsMapper {
     /**
      * 查询所有商品

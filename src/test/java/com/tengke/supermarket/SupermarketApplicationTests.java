@@ -1,49 +1,26 @@
 package com.tengke.supermarket;
 
-import com.tengke.supermarket.dto.PageDTO;
-import com.tengke.supermarket.dto.PurchaseDTO;
-import com.tengke.supermarket.mapper.GoodsMapper;
-import com.tengke.supermarket.mapper.PurchaseMapper;
-import com.tengke.supermarket.mapper.StaffMapper;
-import com.tengke.supermarket.model.PurchaseRecord;
-import com.tengke.supermarket.service.PurchaseService;
+import com.tengke.supermarket.dto.SupplierDTO;
+import com.tengke.supermarket.mapper.SupplierMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 class SupermarketApplicationTests {
 
     @Autowired
-    private PurchaseService purchaseService;
-    @Autowired
-    private StaffMapper staffMapper;
-    @Autowired
-    private GoodsMapper goodsMapper;
-    @Autowired
-    private PurchaseMapper purchaseMapper;
+    private SupplierMapper supplierMapper;
 
     @Test
     public void testPurchaseMapper() {
-
-    }
-   /* @Test
-    public void testGoodsMapper() {
-        List<Integer> list = goodsMapper.selectIdByName();
-        System.out.println(list);
-        System.out.println(list.size());
-    }*/
-
-
-
-    @Test
-    public void testPurchaseRecord(){
-        PageDTO<PurchaseDTO> result = purchaseService.showPurRecordByPage(1, 7,"");
-        for (PurchaseDTO res : result.getData()
-             ) {
-            System.out.println(res);
+        List<SupplierDTO> supplierDTO = supplierMapper.getSupplierIdName();
+        for (SupplierDTO s: supplierDTO
+        ) {
+            System.out.println(s);
         }
     }
-
 
 }

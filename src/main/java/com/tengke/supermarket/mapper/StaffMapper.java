@@ -3,6 +3,7 @@ package com.tengke.supermarket.mapper;
 import com.tengke.supermarket.dto.StaffDTO;
 import com.tengke.supermarket.model.Staff;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * @Description： 员工操作接口
  * @Date:Created in 17:17 2020/7/26
  */
-@Repository
+@Component
 public interface StaffMapper {
 
     /**

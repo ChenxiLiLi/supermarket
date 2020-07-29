@@ -1,6 +1,7 @@
 package com.tengke.supermarket.mapper;
 
 import com.tengke.supermarket.model.SellRecord;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Map;
  * @author cgs
  * @date 2020年7月26日23:45:07
  */
-@Repository
+@Component
 public interface SellRecordMapper {
     /**
      * 分页查询销售记录

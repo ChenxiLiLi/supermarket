@@ -1,6 +1,7 @@
 package com.tengke.supermarket.mapper;
 
 import com.tengke.supermarket.model.SellItem;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  * @author cgs
  * @date 2020年7月26日23:04:38
  */
-@Repository
+@Component
 public interface SellItemMapper {
     /**
      * 批量增加销售项

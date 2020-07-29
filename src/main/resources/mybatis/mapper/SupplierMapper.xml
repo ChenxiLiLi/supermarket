@@ -3,9 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tengke.supermarket.mapper.SupplierMapper">
-
+    <resultMap id="supplierDTO" type="com.tengke.supermarket.dto.SupplierDTO">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
     <!--根据供货商编号查找供货商-->
     <select id="selectSupplierId" resultType="com.tengke.supermarket.model.Supplier">
         select * from supplier where sp_id = #{SupplierId};
+    </select>
+
+    <select id="getSupplierIdName" resultMap="supplierDTO">
+        select s.sp_id as id, s.sp_name as name from supplier s;
     </select>
 </mapper>
