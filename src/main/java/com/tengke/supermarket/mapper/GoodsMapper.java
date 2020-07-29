@@ -27,6 +27,20 @@ public interface GoodsMapper {
     List<Goods> selectGoodsByPage(Map<String,Integer> info);
 
     /**
+     * 分页查询库存告急的商品信息
+     * @param start 偏移量
+     * @param size 页大小
+     * @return 商品列表
+     */
+    List<Goods> selectGoodsLessByPage(int start, int size);
+
+    /**
+     * 查询库存不足的商品记录条数
+     * @return
+     */
+    int countGoodsLess();
+
+    /**
      * 查询商品信息总数
      * @return 总数
      */
