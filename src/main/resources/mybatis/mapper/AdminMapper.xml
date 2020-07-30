@@ -5,10 +5,42 @@
 <mapper namespace="com.tengke.supermarket.mapper.AdminMapper">
 
     <select id="selectAdminByUsername" resultType="admin">
-        select * from admin where admin_name=#{name};
+        select *
+        from admin
+        where admin_name = #{name};
+    </select>
+
+    <select id="selectAdminByToken" resultType="admin">
+        select *
+        from admin
+        where token = #{token};
     </select>
 
     <insert id="addUser" parameterType="admin">
-        insert into admin values (null, #{adminName}, #{adminPassword})
+        insert into admin
+        values (null, #{adminName}, #{adminPassword},
+                #{token}, #{createTime})
     </insert>
+
+    <update id="updateAdmin" parameterType="admin">
+        update admin
+        <set>
+            <if test="adminId!=null">
+                admin_id=#{adminId},
+            </if>
+            <if test="adminName!=null">
+                admin_name=#{adminName},
+            </if>
+            <if test="adminPassword!=null">
+                admin_password=#{adminPassword},
+            </if>
+            <if test="token!=null">
+                token=#{token},
+            </if>
+            <if test="createTime!=null">
+                create_time=#{createTime},
+            </if>
+        </set>
+        where admin_id=#{adminId};
+    </update>
 </mapper>

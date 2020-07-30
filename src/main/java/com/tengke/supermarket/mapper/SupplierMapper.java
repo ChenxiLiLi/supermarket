@@ -1,6 +1,5 @@
 package com.tengke.supermarket.mapper;
 
-import com.tengke.supermarket.dto.SupplierDTO;
 import com.tengke.supermarket.model.Supplier;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +12,6 @@ import java.util.List;
 public interface SupplierMapper {
     /**
      * 根据供货商编号查找供货商
-     *
      * @param supplierId 供货商编号
      * @return 供货商信息
      */

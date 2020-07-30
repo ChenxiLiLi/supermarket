@@ -30,6 +30,4 @@ public class SupplierController {
     public ResultDTO searchAllSupplier(@PathVariable("pageNo") int pageNo, @PathVariable("size") int size) {
         return supplierService.searchAllSupplier(pageNo, size);
     }
-
-
 }

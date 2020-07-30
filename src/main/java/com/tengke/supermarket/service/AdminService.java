@@ -36,13 +36,22 @@ public class AdminService {
         //存在用户，进行密码验证
         if (dbAdmin != null) {
             if (bCryptPasswordEncoder.matches(admin.getAdminPassword(), dbAdmin.getAdminPassword())) {
-                //登录成功，给前端提供数据，用来展示
+                //登录成功
                 //设置token
-                LoginDTO loginDTO = new LoginDTO();
-                loginDTO.setToken(UUID.randomUUID().toString());
-                //设置username
-                loginDTO.setUsername(admin.getAdminName());
-                return ResultDTO.success("登录成功", loginDTO);
+                String token = UUID.randomUUID().toString();
+                dbAdmin.setCreateTime(System.currentTimeMillis());
+                dbAdmin.setToken(token);
+                //更新用户的token
+                int updated = adminMapper.updateAdmin(dbAdmin);
+                if (updated == 1) {
+                    //给前端提供数据，用来展示
+                    LoginDTO loginDTO = new LoginDTO();
+                    loginDTO.setToken(token);
+                    //设置username
+                    loginDTO.setUsername(admin.getAdminName());
+
+                    return ResultDTO.success("登录成功", loginDTO);
+                }
             }
         }
         return ResultDTO.error("用户名或密码错误,请输入重试");

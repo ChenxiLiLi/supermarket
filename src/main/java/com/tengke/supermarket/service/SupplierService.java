@@ -2,7 +2,6 @@ package com.tengke.supermarket.service;
 
 import com.tengke.supermarket.dto.PageDTO;
 import com.tengke.supermarket.dto.ResultDTO;
-import com.tengke.supermarket.dto.SupplierDTO;
 import com.tengke.supermarket.mapper.SupplierMapper;
 import com.tengke.supermarket.model.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;

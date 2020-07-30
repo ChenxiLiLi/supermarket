@@ -23,4 +23,13 @@ public interface AdminMapper {
      * @param admin 用户对象
      */
     void addUser(Admin admin);
+
+    /**
+     * 按token查找用户
+     * @param token
+     * @return
+     */
+    Admin selectAdminByToken(String token);
+
+    int updateAdmin(Admin admin);
 }

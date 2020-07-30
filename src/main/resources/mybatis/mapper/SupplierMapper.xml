@@ -5,7 +5,7 @@
 <mapper namespace="com.tengke.supermarket.mapper.SupplierMapper">
 
     <!--根据供货商编号查找供货商-->
-    <select id="selectSupplierId" resultMap="supplier">
+    <select id="selectSupplierId" resultType="supplier">
         select * from supplier where sp_id = #{supplierId};
     </select>
 

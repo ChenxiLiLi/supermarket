@@ -51,4 +51,6 @@ public class MyWebSecurityConfig extends WebSecurityConfigurerAdapter {
         //忽略相关的静态资源
         web.ignoring().antMatchers("/index.html", "/static/**");
     }
+
+
 }

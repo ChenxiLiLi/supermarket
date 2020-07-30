@@ -18,4 +18,8 @@ public class Admin {
     private String adminName;
 
     private String adminPassword;
+
+    private String token;
+
+    private Long createTime;
 }

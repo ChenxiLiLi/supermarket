@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Supplier {
-    private Integer spID;
+    private Integer spId;
     private String spName;
     private String location;
     private String spTel;
