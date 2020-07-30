@@ -14,11 +14,7 @@ import java.util.Map;
  */
 @Component
 public interface GoodsMapper {
-    /**
-     * 查询所有商品
-     * @return 商品信息列表
-     */
-    List<Goods> selectAllGoods();
+
 
     /**
      * 分页查询商品信息,并且不显示停产商品
@@ -75,12 +71,6 @@ public interface GoodsMapper {
      */
     int updateGoods(Goods goods);
 
-    /**
-     * 删除商品信息
-     * @param gdsId 商品编号
-     * @return 行数
-     */
-    int deleteGoods(int gdsId);
 
     /**
      * 通过商品编号查找商品名字

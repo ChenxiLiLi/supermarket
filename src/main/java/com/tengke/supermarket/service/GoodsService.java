@@ -45,9 +45,9 @@ public class GoodsService {
     public ResultDTO searchGoodsById(int id) {
         Goods goods = goodsMapper.selectGoodsById(id);
         if(goods != null) {
-            return ResultDTO.success("success",goods);
+            return ResultDTO.success("",goods);
         }
-        return ResultDTO.success("未找到该商品");
+        return ResultDTO.success("该商品不存在！");
     }
 
     /**

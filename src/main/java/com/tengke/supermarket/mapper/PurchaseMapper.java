@@ -19,7 +19,11 @@ public interface PurchaseMapper {
      */
     int addPurRecord(PurchaseRecord purchaseRecord);
 
-    List<PurchaseRecord> selectAllPurRecord();
+    /**
+     * 通过进货编号查找所有进货记录
+     * @param purchaseId 进货编号
+     * @return 进货记录列表
+     */
 
     List<PurchaseRecord> selectPurRecordById(int purchaseId);
 
