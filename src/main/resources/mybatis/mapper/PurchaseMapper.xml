@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tengke.supermarket.mapper.PurchaseMapper">
+
+    <!--将数据库表字段映射到实体类属性名-->
     <resultMap id="result" type="com.tengke.supermarket.model.PurchaseRecord">
         <result column="p_id" property="purchaseId"/>
         <result column="sp_id" property="supplierId"/>
@@ -11,7 +13,6 @@
         <result column="gds_id" property="goodsId"/>
         <result column="p_price" property="price"/>
         <result column="p_amount" property="amount"/>
-
     </resultMap>
 
     <!--添加一条进货记录-->

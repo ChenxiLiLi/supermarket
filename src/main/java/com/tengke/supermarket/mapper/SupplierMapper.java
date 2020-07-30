@@ -20,14 +20,16 @@ public interface SupplierMapper {
     Supplier selectSupplierId(int supplierId);
 
     /**
-     * 获取供应商集合,用于展示可选择的供应商列表
+     * 查找供应商信息记录数
      * @return
      */
-    List<Supplier> getAllSupplierId();
+    int countSuppliers();
 
     /**
-     * 获取所有的供应商名称
-     * @return
+     * 分页查询所有供应商信息
+     * @param start 偏移量
+     * @param size 页面大小
+     * @return 供应商列表
      */
-    List<SupplierDTO> getSupplierIdName();
+    List<Supplier> selectAllSupplier(int start, int size);
 }
