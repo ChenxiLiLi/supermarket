@@ -21,7 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     private AdminMapper adminMapper;
 
-    private static final long A_WEEK = 7 * 86400000;
+    private static final long DAY = 86400000;
 
     /**
      * 请求处理之前调用
@@ -31,7 +31,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         //通过请求对象获取token
         String token = request.getHeader("Authorization");
         //token不为空
-        if (token != null) {
+        if (token != null && !"".equals(token)) {
+            System.out.println("token为：" + token);
             //匹配数据库，查找出符合的对应的User
             Admin dbAdmin = adminMapper.selectAdminByToken(token);
             //用户不存在
@@ -39,12 +40,12 @@ public class LoginInterceptor implements HandlerInterceptor {
                 System.out.println("用户不存在");
                 return false;
             }
-            System.out.println("token为：" + token);
             System.out.println("用户为：" + dbAdmin);
-            //计算token是否已经超时, 为一星期
-            if ((System.currentTimeMillis() - dbAdmin.getCreateTime()) > A_WEEK) {
-                //重定向到login
-                response.addHeader("Location", "/login");
+            //计算token是否已经超时, 有效时期为1天
+            if ((System.currentTimeMillis() - dbAdmin.getCreateTime()) > DAY) {
+                //重新登录
+                request.setAttribute("Authorization", null);
+                System.out.println("token失效，请重新登录");
                 return false;
             }
         }

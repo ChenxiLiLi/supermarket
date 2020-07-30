@@ -28,7 +28,6 @@ public class StaffController {
         Integer page = Integer.parseInt(request.getParameter("page"));
         Integer size = Integer.parseInt(request.getParameter("size"));
         String search = request.getParameter("search");
-        PageDTO<StaffDTO> res = staffService.getAllStaffByPage(page, size, search);
-        return ResultDTO.success("员工信息获取成功", res);
+        return staffService.getAllStaffByPage(page, size, search);
     }
 }
